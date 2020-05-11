@@ -7,10 +7,12 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 
 @Controller
 @Slf4j
+@CrossOrigin("*")
 public class SheetAPI {
 
 
@@ -18,8 +20,6 @@ public class SheetAPI {
     @SendTo("/topic/public") // 결과를 return?
     public SheetMessage sendMessage(@Payload SheetMessage sheetMessage) {
         log.info("sheetMessage : {} ", sheetMessage.toString());
-        SheetMessage sm = new SheetMessage();
-        sm.setContent("hihi");
         return sheetMessage;
     }
 

@@ -21,19 +21,24 @@ public class WebSocketEventListener {
 
     @EventListener
     public void handleWebSocketConnectListener(SessionConnectedEvent event) {
-//        log.info("Received a new web socket connection");
+        log.info("-------------------------------------");
+        log.info("Received a new web socket connection");
+        log.info("-------------------------------------");
 
     }
 
     @EventListener
     public void handleWebSocketDisconnectListener(SessionDisconnectEvent event) {
+        log.info("-------------------------------------");
+        log.info("webSocket disconnected");
+        log.info("-------------------------------------");
         StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(event.getMessage());
 
-        SheetMessage sm = new SheetMessage();
-        sm.setContent("hihi");
+//        SheetMessage sm = new SheetMessage();
+//        sm.setContent("hihi");
+////
 //
-
-        messagingTemplate.convertAndSend("/topic/public", sm);
+//        messagingTemplate.convertAndSend("/topic/public", sm);
 
     }
 }
