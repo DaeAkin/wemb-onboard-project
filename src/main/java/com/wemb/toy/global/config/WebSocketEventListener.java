@@ -24,7 +24,6 @@ public class WebSocketEventListener {
         log.info("-------------------------------------");
         log.info("Received a new web socket connection");
         log.info("-------------------------------------");
-
     }
 
     @EventListener

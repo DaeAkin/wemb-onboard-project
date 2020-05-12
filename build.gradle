@@ -24,8 +24,24 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-devtools'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+//	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation group: 'org.springframework.security.oauth', name: 'spring-security-oauth2', version: '2.3.3.RELEASE'
+//embedded-redis
+//	compile group: 'it.ozimov', name: 'embedded-redis', version: '0.7.2'
 	implementation 'org.springframework.boot:spring-boot-starter-logging'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	//JAVA 11 이상 필요
+	runtime('com.sun.xml.bind:jaxb-core:2.3.0.1')
+	runtime('com.sun.xml.bind:jaxb-impl:2.3.1')
+	runtime('javax.xml.bind:jaxb-api:2.3.1')
+	runtime('org.javassist:javassist:3.23.1-GA')
+
+	implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+	implementation('org.springframework.boot:spring-boot-starter-jdbc')
+	compile("com.h2database:h2")
+
 }
