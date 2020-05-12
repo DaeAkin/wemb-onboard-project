@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.wemb'
-version = '0.0.1-SNAPSHOT'
+version = 'sheet-Project-0.0.1'
 sourceCompatibility = '1.8'
 
 configurations {
@@ -24,11 +24,11 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-devtools'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-websocket'
-//	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation group: 'org.springframework.security.oauth', name: 'spring-security-oauth2', version: '2.3.3.RELEASE'
 //embedded-redis
-//	compile group: 'it.ozimov', name: 'embedded-redis', version: '0.7.2'
+	compile group: 'it.ozimov', name: 'embedded-redis', version: '0.7.2'
 	implementation 'org.springframework.boot:spring-boot-starter-logging'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'

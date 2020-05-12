@@ -64,4 +64,6 @@ public class Oauth2AuthorizationConfig extends AuthorizationServerConfigurerAdap
                 .scopes("USER")
                 .authorizedGrantTypes("password");
     }
+
+
 }
