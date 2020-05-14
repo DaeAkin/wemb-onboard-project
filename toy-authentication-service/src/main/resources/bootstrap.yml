@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: toy-authentication-service
+  profiles:
+    active:
+      default
+# config-server
+#  cloud:
+#    config:
+#      uri: http://localhost:12222
+
+
+
+

@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: toy-zuul
+  profiles:
+    active:
+      default
+# config-server
+#  cloud:
+#    config:
+#      uri: http://localhost:12222

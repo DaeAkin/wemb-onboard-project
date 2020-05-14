@@ -1,0 +1,80 @@
+spring:
+  profiles:
+    active: default
+
+---
+ribbon:
+  eureka:
+    enabled: true
+eureka:
+  instance:
+    lease-renewal-interval-in-seconds: 1
+    lease-expiration-duration-in-seconds: 2
+    prefer-ip-address: true #서비스간 통신 시 hostname 보다 ip 를 우선 사용 함
+  client:
+    healthcheck:
+      enabled: true
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8761/eureka/
+server:
+  port: 8087
+spring:
+  profiles: default
+  redis:
+    host: localhost
+    port: 6379
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:db;DB_CLOSE_DELAY=-1
+    username: testAdmin
+    password: testPassword
+    jpa:
+      hibernate:
+        ddl-auto: update
+      show-sql: true
+  devtools:
+    livereload:
+      enabled: true
+
+logging:
+  level:
+    org :
+      springframework :
+        security : info , debug
+    com:
+      web:
+        toy : info
+
+security:
+  oauth2:
+    resource:
+      userInfoUri: http://localhost:8901/user
+
+---
+server:
+  port: 8080
+spring:
+  profiles: production
+  redis:
+    host: localhost
+    port: 6379
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:db;DB_CLOSE_DELAY=-1
+    username: testAdmin
+    password: testPassword
+    jpa:
+      hibernate:
+        ddl-auto: update
+      show-sql: true
+  devtools:
+    livereload:
+      enabled: true
+
+logging:
+  level:
+    com:
+      web:
+        toy : info

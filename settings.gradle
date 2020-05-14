@@ -1,1 +1,6 @@
 rootProject.name = 'toy'
+include 'toy-authentication-service'
+include 'toy-websocket-service'
+include 'toy-discovery'
+include 'toy-zuul'
+
