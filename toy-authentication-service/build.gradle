@@ -94,6 +94,7 @@ dependencies {
 
     // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.9.8'
+    compile("com.h2database:h2")
 
 }
 
