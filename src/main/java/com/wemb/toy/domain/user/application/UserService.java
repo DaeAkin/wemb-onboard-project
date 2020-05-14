@@ -23,6 +23,10 @@ public class UserService implements UserDetailsService {
         donghyeon.initialize(passwordEncoder);
         userRepository.save(donghyeon);
 
+        User user2 = new User("user2", "1234", 25);
+        user2.initialize(passwordEncoder);
+        userRepository.save(user2);
+
     }
 
     private final UserRepository userRepository;

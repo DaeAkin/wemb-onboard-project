@@ -14,5 +14,5 @@
 ## 👍 TODO
 
 - ~~인증권한 구현~~
-- Redis를 이용한 데이터 영속화
-- Scabable
+- ~~Redis를 이용한 데이터 영속화~~
+- ~~Scabable~~

@@ -1,0 +1,35 @@
+spring:
+  profiles:
+    active: test
+
+---
+server:
+  port: 8111
+spring:
+  profiles: test
+  redis:
+    host: localhost
+    port: 6379
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:db;DB_CLOSE_DELAY=-1
+    username: testAdmin
+    password: testPassword
+    jpa:
+      hibernate:
+        ddl-auto: update
+      show-sql: true
+  devtools:
+    livereload:
+      enabled: true
+  main:
+    allow-bean-definition-overriding: true
+logging:
+  level:
+    org :
+      springframework :
+        security : info , debug
+    com:
+      web:
+        toy : info
+

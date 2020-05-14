@@ -6,6 +6,7 @@ import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBr
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 
+//https://stackoverflow.com/questions/45405332/websocket-authentication-and-authorization-in-spring)
 @Configuration
 @EnableWebSocketMessageBroker
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
@@ -16,10 +17,17 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry.addEndpoint("/ws")
                 .setAllowedOrigins("*")
+//                .addInterceptors(new HandshakeInterceptor())
                 .withSockJS();
+        //https://stackoverflow.com/questions/45405332/websocket-authentication-and-authorization-in-spring)
     }
 
-
+    /**[
+     * ["12"]["3123][]
+     * ["][][]
+     * ]
+     * @param registry
+     */
     @Override
     public void configureMessageBroker(MessageBrokerRegistry registry) {
         //클라이언트에서 메세지 송신시 붙여줄 prefix

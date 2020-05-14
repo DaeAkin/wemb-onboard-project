@@ -2,6 +2,7 @@ package com.wemb.toy.global.config;
 
 
 import com.wemb.toy.domain.pubsub.RedisSubscriber;
+import com.wemb.toy.domain.sheet.dto.SheetMessage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -54,7 +55,7 @@ public class RedisConfig {
         RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(connectionFactory);
         redisTemplate.setKeySerializer(new StringRedisSerializer());
-        redisTemplate.setValueSerializer(new Jackson2JsonRedisSerializer<>(String.class));
+        redisTemplate.setValueSerializer(new Jackson2JsonRedisSerializer<>(SheetMessage.class));
         return redisTemplate;
     }
 }
