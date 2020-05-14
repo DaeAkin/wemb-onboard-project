@@ -6,12 +6,14 @@ import com.wemb.toy.domain.sheet.dao.SheetRepository;
 import com.wemb.toy.domain.sheet.dto.RowData;
 import com.wemb.toy.domain.sheet.dto.SheetMessage;
 import com.wemb.toy.domain.sheet.dto.SheetRoomResponse;
+import com.wemb.toy.domain.sheet.dto.SheetSaveRequest;
 import com.wemb.toy.domain.user.dao.UserRepository;
 import com.wemb.toy.domain.user.domain.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.listener.ChannelTopic;
+import org.springframework.http.HttpStatus;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -44,7 +46,7 @@ public class SheetAPI {
         User user = (User)(authentication.getPrincipal());
         sheetMessage.setUsername(user.getName());
         redisPublisher.publish(ChannelTopic.of("sheetMessage"),sheetMessage);
-        sheetRepository.save(sheetMessage);
+//        sheetRepository.save(sheetMessage);
         return sheetMessage;
     }
 
@@ -60,6 +62,12 @@ public class SheetAPI {
     @GetMapping
     public SheetMessage getSheetMessage() {
        return sheetRepository.getSheetMessage();
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public void saveSheet(@RequestBody SheetSaveRequest sheetSaveRequest) {
+        sheetRepository.save(sheetSaveRequest);
     }
 
     @GetMapping("/test")
