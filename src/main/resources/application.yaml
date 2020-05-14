@@ -30,7 +30,7 @@ logging:
         security : info , debug
     com:
       web:
-        toy : info
+        toy : DEBUG
 
 
 ---

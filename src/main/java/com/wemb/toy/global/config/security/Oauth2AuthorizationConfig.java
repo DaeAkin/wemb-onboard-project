@@ -1,4 +1,4 @@
-package com.wemb.toy.global.config;
+package com.wemb.toy.global.config.security;
 
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;

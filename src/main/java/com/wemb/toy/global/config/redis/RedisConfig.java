@@ -1,4 +1,4 @@
-package com.wemb.toy.global.config;
+package com.wemb.toy.global.config.redis;
 
 
 import com.wemb.toy.domain.pubsub.RedisSubscriber;

@@ -20,30 +20,17 @@ public class RedisSubscriber implements MessageListener {
     private final RedisTemplate redisTemplate;
     private final SimpMessageSendingOperations messagingTemplate;
 
-    /**
-     * Redis에서 메시지가 발행(publish)되면 대기하고 있던 Redis Subscriber가 해당 메시지를 받아 처리한다.
-     */
-    public void sendMessage(String publishMessage) {
-        try {
-            // ChatMessage 객채로 맵핑
-            SheetMessage sheetMessage = objectMapper.readValue(publishMessage, SheetMessage.class);
-            // 채팅방을 구독한 클라이언트에게 메시지 발송
-//            messagingTemplate.convertAndSend("/sub/chat/room/" + chatMessage.getRoomId(), chatMessage);
-        } catch (Exception e) {
-            log.error("Exception {}", e);
-        }
-    }
-
     @Override
     public void onMessage(Message message, byte[] pattern) {
-        log.info("메세지 뿌리기");
         try {
             // redis에서 발행된 데이터를 받아 deserialize
             String publishMessage = (String) redisTemplate.getStringSerializer().deserialize(message.getBody());
             // ChatMessage 객채로 맵핑
             SheetMessage sheetMessage = objectMapper.readValue(publishMessage, SheetMessage.class);
+            log.info("redis subscribe Message :: {}",sheetMessage.toString());
             // Websocket 구독자에게 채팅 메시지 Send
             messagingTemplate.convertAndSend("/topic/public",sheetMessage);
+
         } catch (Exception e) {
             log.error(e.getMessage());
         }

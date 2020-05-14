@@ -1,4 +1,4 @@
-package com.wemb.toy.global.config;
+package com.wemb.toy.global.config.security;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.messaging.MessageSecurityMetadataSourceRegistry;

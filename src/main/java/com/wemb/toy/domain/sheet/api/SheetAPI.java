@@ -37,29 +37,18 @@ public class SheetAPI {
 
     private final RedisPublisher redisPublisher;
     private final SheetRepository sheetRepository;
-    private final UserRepository userRepository;
 
     @MessageMapping("/chat.sendMessage") // Message를 보낼 endPoint 설정 prefix = /app/
-//    @SendTo("/topic/public") // 결과를 return?
     public SheetMessage sendMessage(@Payload SheetMessage sheetMessage,Authentication authentication) {
-//        log.info("sned()");
         User user = (User)(authentication.getPrincipal());
+        log.info("message is send :: {} , username is :: {}",sheetMessage.toString() ,user.getUsername());
         sheetMessage.setUsername(user.getName());
         redisPublisher.publish(ChannelTopic.of("sheetMessage"),sheetMessage);
-//        sheetRepository.save(sheetMessage);
         return sheetMessage;
     }
 
-
-    @GetMapping("/room")
-    public SheetRoomResponse makeRandomRoomId() {
-        SheetRoomResponse sr = new SheetRoomResponse();
-        String roomId = UUID.randomUUID().toString().substring(0, 5);
-        sr.setRoomId(roomId);
-        return sr;
-    }
-
     @GetMapping
+    @ResponseStatus(HttpStatus.OK)
     public SheetMessage getSheetMessage() {
        return sheetRepository.getSheetMessage();
     }
@@ -70,16 +59,5 @@ public class SheetAPI {
         sheetRepository.save(sheetSaveRequest);
     }
 
-    @GetMapping("/test")
-    public SheetMessage test(@RequestBody SheetMessage sheetMessage ) {
-        log.info("sheetMessage : {}" , sheetMessage.toString());
-//        SheetMessage sm = new SheetMessage();
-//
-//        List<String> list1 = Arrays.asList("aa", "bb", "cc");
-//        List<String> list2 = Arrays.asList("dd", "ee", "ff");
-//
-//        sm.setRowData(Arrays.asList(list1,list2));
-        return sheetMessage;
-    }
 
 }
