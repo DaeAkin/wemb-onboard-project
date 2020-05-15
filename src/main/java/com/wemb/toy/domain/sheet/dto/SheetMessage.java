@@ -7,6 +7,8 @@ import java.util.List;
 @Data
 public class SheetMessage {
 
+    private String messageType;
+
     private String name;
     private List<List<String>> rowData;
     private List<ColData> colData;
@@ -18,5 +20,7 @@ public class SheetMessage {
     private int width;
     private int height;
     private String username;
+
+    private String color;
 
 }

@@ -19,13 +19,17 @@ public class UserService implements UserDetailsService {
     private final PasswordEncoder passwordEncoder;
     @PostConstruct
     public void makeDonghyeon() {
-        User donghyeon = new User("donghyeon", "1234", 25);
+        User donghyeon = new User("user1", "1234", 25);
         donghyeon.initialize(passwordEncoder);
         userRepository.save(donghyeon);
 
         User user2 = new User("user2", "1234", 25);
         user2.initialize(passwordEncoder);
         userRepository.save(user2);
+
+        User user3 = new User("user3", "1234", 25);
+        user3.initialize(passwordEncoder);
+        userRepository.save(user3);
 
     }
 

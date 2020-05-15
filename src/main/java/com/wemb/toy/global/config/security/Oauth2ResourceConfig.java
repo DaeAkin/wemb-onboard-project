@@ -28,8 +28,8 @@ public class Oauth2ResourceConfig extends ResourceServerConfigurerAdapter {
                 .and()
                 .csrf().disable()
                 .authorizeRequests()
-//                .anyRequest().access("#oauth2.hasScope('USER')");
-        .anyRequest().permitAll();
+                .anyRequest().access("#oauth2.hasScope('USER')");
+//        .anyRequest().permitAll();
     }
 
 
