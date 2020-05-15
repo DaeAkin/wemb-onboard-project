@@ -49,7 +49,7 @@ public class SheetAPI {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public SheetMessage getSheetMessage() {
+    public SheetSaveRequest getSheetMessage() {
        return sheetRepository.getSheetMessage();
     }
 
